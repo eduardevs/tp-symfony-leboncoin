@@ -1,25 +1,25 @@
-# Php-fpm-alpine x Nginx
-### Symfony | Docker
+# Projet : LeBonCoin du Pauvre
 
-Avec MariaDB & MailDev
+Equipe: Lisa, Paola, Tanya, Céline et Eduardo.
 
-Pour lancer le projet :
-````shell
-docker-compose up -d
-docker exec symfony_docker composer create-project symfony/skeleton html
-sudo chown -R $USER ./
-````
+## Features de l'app :
 
-Pensez ensuite à aller exécuter toutes vos commandes depuis l'intérieur du container.
+- Des annonces, description, un prix, une date de publication, un titre
 
-Par exemple :
-````shell
-cd symfony_project
-composer require orm
-````
-(Demandez à Composer de NE PAS créer une config Docker pour la database)
+- Des tags pour les annonces (véhicule, électronique)
 
-Enfin, modifiez la config DB dans le fichier .env de Symfony :
-````shell
-DATABASE_URL=mysql://root:ChangeMeLater@db:3306/symfony_db?serverVersion=mariadb-10.7.1
-````
+- Des questions posées par les utilisateurs sur les produits en vente
+
+- Des profils utilisateurs, vendeurs qui peuvent aussi être acheteurs et admins
+
+- Système d'up-vote/down vote pour noter les vendeurs
+
+- Système de recherche
+
+## Consignes :
+* Le projet devra être fait en utilisant Symfony
+et Twig
+* La base de données proviendra d’un
+container Docker
+* Les données en base de données devront
+être générées via des Fixtures
