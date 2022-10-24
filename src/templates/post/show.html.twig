@@ -48,16 +48,10 @@
                     <div class="carousel-inner">
                     {% for image in post.images %}
 
-                    {# {{dump(post.images)}} #}
-
-                    {# {% if ()%} #}
-
-                        <div class="carousel-item active">
+                        <div class="carousel-item">
                             {# <img class="d-block w-100" src={{post.images.link}} alt="Photo" > #}
                             <img class="d-block w-100" src={{image}} alt="Photo">
                         </div>
-
-                        {# {{dump(post.images)}} #}
 
                         {# <div class="carousel-item">
                             <img class="d-block w-100" src={{image}} alt="Photo">
@@ -122,4 +116,6 @@
         
     </div>
 
+<script src="{{ asset('assets/js/post.js') }}"></script>
 {% endblock %}
+
