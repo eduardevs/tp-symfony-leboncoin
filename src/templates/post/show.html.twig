@@ -80,6 +80,9 @@
                     <span class="name">{{ post.name }}</span>
 
                     <span>{{ post.price }} €</span>
+
+                    {# CategorieId #}
+                    <span>Categorie : {{ post.category }}</span>
                     
                     <span>Date de publication : {{ post.date ? post.date|date('d/m/Y') : '' }}</span>
 

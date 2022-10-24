@@ -45,6 +45,11 @@ class AppFixtures extends Fixture
         PostFactory::all(function(){
             return ['images' => ImageFactory::random()];
         });
+        PostFactory::all(function(){
+            // return ['categories' => CategoryFactory::random()];
+            return ['category' => CategoryFactory::random()];
+
+        });
         
 
 
