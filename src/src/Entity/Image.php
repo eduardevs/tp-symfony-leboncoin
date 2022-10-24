@@ -20,6 +20,10 @@ class Image
     #[ORM\JoinColumn(nullable: false)]
     private ?Post $postId = null;
 
+    public function __toString(){
+        return $this->link; 
+    }
+
     public function getId(): ?int
     {
         return $this->id;

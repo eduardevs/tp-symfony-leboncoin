@@ -1,0 +1,38 @@
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* INDEX */
+.date {
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+/* SHOW */
+
+.retour {
+    color: #6B77E9;
+}
+
+.name {
+    font-size: 1.5em;
+    color: #6B77E9;
+}
+
+.description {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.shadow {
+    -webkit-box-shadow: 5px 5px 15px 2px rgba(106,106,106,0.65); 
+    box-shadow: 5px 5px 15px 2px rgba(106,106,106,0.65);
+}
+
+/* CREATE */
+form {
+    width: auto;
+}

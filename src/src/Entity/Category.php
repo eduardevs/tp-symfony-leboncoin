@@ -22,6 +22,10 @@ class Category
     #[ORM\ManyToOne(inversedBy: 'categories')]
     private ?Post $postId = null;
 
+    public function __toString(){
+        return $this->name; 
+    }
+
     public function getId(): ?int
     {
         return $this->id;

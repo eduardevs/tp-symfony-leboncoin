@@ -40,12 +40,14 @@ class Post
 
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class)]
     private Collection $images;
-
+    
+    ////////////////////////////////////////////////////////////////////
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->date = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

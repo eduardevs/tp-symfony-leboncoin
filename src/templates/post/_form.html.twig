@@ -1,0 +1,12 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form, {'attr': {'class': 'd-flex flex-column justify-content-center ml-auto mr-auto'}}) }}
+    {# {{ form_widget(form) }} #}
+    {# {{ form_row(form.name) }} #}
+    {{ form_row(form.name, {'label': 'Titre'}) }}
+    {{ form_row(form.price, {'label': 'Prix'}) }}
+    {{ form_row(form.images, {'label': 'Ajouter une ou plusieurs photo(s)'}) }}
+    {{ form_row(form.categories, {'label': 'Catégorie'}) }}
+    {{ form_row(form.description) }}
+    <button class="btn btn-outline-primary">{{ button_label|default('Créer une annonce') }}</button>
+{{ form_end(form) }}
