@@ -47,11 +47,13 @@ class Post
     
     ////////////////////////////////////////////////////////////////////
     public function __construct()
+    // public function __construct($user)
     {
         // $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->date = new \DateTimeImmutable();
+        // $this->userId = $user;
     }
 
     public function getId(): ?int

@@ -15,7 +15,8 @@ class PostType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('images')
-            ->add('categories')
+            // ->add('categories')
+            ->add('category')
             ->add('description')
         ;
     }
