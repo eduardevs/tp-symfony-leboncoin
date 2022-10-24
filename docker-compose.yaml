@@ -25,6 +25,23 @@ services:
             MYSQL_ROOT_PASSWORD: 'ChangeMeLater'
         networks:
             - acpSymfony
+
+    phpmyadmin:
+        image: phpmyadmin:latest
+        restart: always
+        ports:
+            - '8080:80'
+        environment:
+            # demande le nom du server
+            #- PMA_ARBITRARY=1
+            # Pour ne pas avoir à préciser le nom du server
+            - PMA_HOST=db
+            - PMA_PASSWORD=ChangeMeLater
+        depends_on:
+            - db
+        networks:
+            -  acpSymfony
+            
 volumes:
     db-data:
 

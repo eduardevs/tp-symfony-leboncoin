@@ -32,8 +32,8 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?User $userId = null;
 
-    #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Category::class)]
-    private Collection $categories;
+    // #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Category::class)]
+    // private Collection $categories;
 
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Question::class)]
     private Collection $questions;
@@ -41,11 +41,17 @@ class Post
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class)]
     private Collection $images;
 
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+    
+    ////////////////////////////////////////////////////////////////////
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        // $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->date = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -113,35 +119,35 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
+    // /**
+    //  * @return Collection<int, Category>
+    //  */
+    // public function getCategories(): Collection
+    // {
+    //     return $this->categories;
+    // }
 
-    public function addCategory(Category $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-            $category->setPostId($this);
-        }
+    // public function addCategory(Category $category): self
+    // {
+    //     if (!$this->categories->contains($category)) {
+    //         $this->categories->add($category);
+    //         $category->setPostId($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getPostId() === $this) {
-                $category->setPostId(null);
-            }
-        }
+    // public function removeCategory(Category $category): self
+    // {
+    //     if ($this->categories->removeElement($category)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($category->getPostId() === $this) {
+    //             $category->setPostId(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Question>
@@ -199,6 +205,18 @@ class Post
                 $image->setPostId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
