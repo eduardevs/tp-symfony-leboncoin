@@ -7,6 +7,7 @@ use App\Repository\PostRepository;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use App\Factory\CategoryFactory;
 
 /**
  * @extends ModelFactory<Post>
@@ -44,6 +45,7 @@ final class PostFactory extends ModelFactory
             'description' => self::faker()->text(),
             'price' => self::faker()->randomFloat(2),
             'date' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
+            "category" => CategoryFactory::random(),
         ];
     }
 
