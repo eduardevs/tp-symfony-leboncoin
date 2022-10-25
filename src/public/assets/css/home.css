@@ -1,0 +1,100 @@
+p{
+    position: absolute;
+    width: 894px;
+    height: 48px;
+    left: 270px;
+    top: 144px;
+
+    font-family: Verdana (sans-serif);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #3D3D3E;
+}
+.rectangle{
+    box-sizing: border-box;
+    position: absolute;
+    width: 1086.92px;
+    height: 271px;
+    left: 180px;
+    top: 257px;
+    background: #6B77E9;
+    border: 1px solid #7C7C7C;
+    box-shadow: 1px 3px 15px rgba(32, 31, 31, 0.25);
+    border-radius: 20px;
+}
+
+.dropbtn {
+    /* background-color: #4CAF50; */
+    color:  #7C7C7C;
+    padding: 16px;
+    font-size: 16px;
+    /* border: none; */
+
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 220.4px;
+    height: 63.73px;
+    /* left: 224.28px;
+    top: 326px; */
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    border-radius: 10px;
+    cursor: pointer;
+}
+  
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    width: 220.4px;
+    height: 63.73px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+  
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    /* background-color:  #7C7C7C; */
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+button{
+    /* background-color:  #7C7C7C; */
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
