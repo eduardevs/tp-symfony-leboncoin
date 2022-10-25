@@ -39,6 +39,7 @@ class Post
     private Collection $questions;
 
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
