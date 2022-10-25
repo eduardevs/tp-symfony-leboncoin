@@ -39,6 +39,7 @@ class Post
     private Collection $questions;
 
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
@@ -47,13 +48,11 @@ class Post
     
     ////////////////////////////////////////////////////////////////////
     public function __construct()
-    // public function __construct($user)
     {
         // $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->date = new \DateTimeImmutable();
-        // $this->userId = $user;
     }
 
     public function getId(): ?int
