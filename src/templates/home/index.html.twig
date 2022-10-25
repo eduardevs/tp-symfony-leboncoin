@@ -4,18 +4,20 @@
 {% block body %}
 <link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
 
-<style>
+{# <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+</style> #}
 
 <div class="example-wrapper">
-    <h4>Devenez acteurs d'une consommation  raisonnée</h4>
-    <p>Ici vous trouverez votre bonheur : Seconde main, réemploi, reconditionnement ou encore réparation... </p>
+    <p>Devenez acteurs d'une consommation  raisonnée  <br>
+        Ici vous trouverez votre bonheur : Seconde main, réemploi, reconditionnement ou  <br>
+        encore réparation... 
+    </p>
 
     <div class="rectangle">
         <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
+            <button class="dropbtn">Catégorie</button>
             <div class="dropdown-content">
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
@@ -30,11 +32,11 @@
                 <a href="#">> 200</a>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0">
+        {# <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-1" type="search" placeholder="Recherche..." aria-label="Search">
-            <button type="submit">🔍</button>
-            {# class="btn btn-outline-success my-2 my-sm-0" #}
-        </form>
+            <button type="submit">🔍</button> 
+            class="btn btn-outline-success my-2 my-sm-0"
+        </form> #}
     </div>
 </div>
 {% endblock %}

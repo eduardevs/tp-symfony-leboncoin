@@ -3,26 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🧺</text></svg>">
+        {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🧺</text></svg>"> #}
+        {# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" /> #}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+        <link href="{{ asset('assets/css/index.css') }}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+        <nav class="navbar fixed-top navbar-expand-lg" style="background-color:rgb(255, 255, 240);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">🧺LeBonCoinDuPauvre</a>
+                {# <a class="navbar-brand" href="#">🧺LeBonCoinDuPauvre</a> #}
+                <a class="navbar-brand" href="{{ path('app_home') }}">🧺LeBonCoinDuPauvre</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Annonces</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_post_index') }}">Annonces</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Ajouter une annonce</a>
+                            <a class="nav-link" href="{{ path('app_post_new') }}">Ajouter une annonce</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                         </li>
                     </ul>
                     <button class="btn btn-outline-success" type="submit">Connexion</button>
@@ -30,13 +38,16 @@
             </div>
         </nav>
         <div class="container">
-            {% block body %}{% endblock %}
+            {% block body %}{% endblock %} 
+        </div>
+        <div class="footer_bg">
+            <footer class="bg-dark text-center text-white">
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2022 Copyright:<a class="text-white" href="">🧺LeBonCoinDuPauvre</a>
+                </div>
+            </footer>
         </div>
         {% block javascripts %}{% endblock %}
     </body>
-    <footer class="bg-dark text-center text-white">
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright:<a class="text-white" href="">🧺LeBonCoinDuPauvre</a>
-        </div>
-    </footer>
+
 </html>
