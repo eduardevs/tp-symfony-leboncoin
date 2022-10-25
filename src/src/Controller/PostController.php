@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Repository\ImageRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
-    public function index(PostRepository $postRepository): Response
+    public function index(PostRepository $postRepository, ImageRepository $images): Response
     {
-        $test = $postRepository->findAll();
         return $this->render('post/index.html.twig', [
             'posts' => $postRepository->findAll(),
         ]);
@@ -26,13 +27,15 @@ class PostController extends AbstractController
     #[Route('/new', name: 'app_post_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PostRepository $postRepository): Response
     {
+        $user = $this->getUser();
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
+        $post->setUserId($user);
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
             $postRepository->save($post, true);
-
             return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
         }
 
