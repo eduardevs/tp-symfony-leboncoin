@@ -1,0 +1,116 @@
+*{
+    /* font-family: 'Inter'; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+/* body{
+    background-color: orange;
+} */
+p{
+    /* position: absolute; */
+    /* width: 894px; */
+    /* height: 48px; */
+    left: 290px;
+    top: 164px;
+    margin-bottom: 150px;
+    margin-left: 100px;
+    margin-right: 100px ;
+    /* background-color: #6B77E9; */
+    padding-top: 100px ;
+    padding-bottom: 100px;
+    /* font-family: Verdana (sans-serif);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px; */
+    /* text-align: center; */
+    color: #3D3D3E; 
+}
+
+h4{
+    position: absolute;
+    width: 894px;
+    height: 48px;
+    left: 270px;
+    top: 144px; 
+
+    text-align: center;
+    color: #3D3D3E;
+}
+.searchtable{
+    background: #6B77E9;
+    border: 1px solid #7C7C7C;
+    box-shadow: 1px 3px 15px rgba(32, 31, 31, 0.25);
+    border-radius: 20px; 
+    width:600px;
+    height:300px;
+    position:absolute;
+    top:70%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.dropbtn {
+    color:  #7C7C7C;
+    padding: 16px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 220.4px;
+    height: 63.73px;
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    border-radius: 10px;
+    cursor: pointer;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top:50px; 
+    left:50px;
+    right: 50px;
+    bottom: 50px;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    width: 220.4px;
+    height: 63.73px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+  
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+button{
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}

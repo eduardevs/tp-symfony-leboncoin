@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block body %}
+<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
+
+
+<div class="example-wrapper">
+    <p>Devenez acteurs d'une consommation  raisonnée  <br>
+        Ici vous trouverez votre bonheur : Seconde main, réemploi, reconditionnement ou  <br>
+        encore réparation... 
+    </p>
+
+    <div class="searchtable">
+        <div class="dropdown">
+            <button class="dropbtn">Catégorie</button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Prix</button>
+            <div class="dropdown-content">
+                <a href="#">> 100</a>
+                <a href="#">> 150</a>
+                <a href="#">> 200</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
