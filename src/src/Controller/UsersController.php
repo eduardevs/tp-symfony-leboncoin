@@ -28,7 +28,7 @@ class UsersController extends AbstractController
 
     #[Route('/users/edit/{id}', name: 'user_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function editUser(User $user, Request $request, EntityManagerInterface $manager, UserRepository $repository, int $id): Response {
+    public function editUser(User $user, Request $request, EntityManagerInterface $manager): Response {
         // as not retrieving id anymore, int $id and UserRepository $repository not needed as parameter
     
         // we can log the object dd($user); // ? doc  // https://symfony.com/bundles/SensioFrameworkExtraBundle/current/annotations/converters.html
