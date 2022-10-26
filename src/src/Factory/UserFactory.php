@@ -41,7 +41,7 @@ final class UserFactory extends ModelFactory
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'email' => self::faker()->email(),
-            'roles' => self::faker()->randomElements(["Admin", "Vendeur", "Acheteur"]),
+            // 'roles' => self::faker()->randomElements(["ROLE_ADMIN", "", ""]),
             'password' => self::faker()->word(),
             'firstname' => self::faker()->firstName(),
             'lastname' => self::faker()->lastName(),
@@ -53,9 +53,15 @@ final class UserFactory extends ModelFactory
 
     protected function initialize(): self
     {
+     
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-            // ->afterInstantiate(function(User $user): void {})
+            ->afterInstantiate(function(User $user): void {
+            $rand = rand(1, 10);
+             if ($rand > 5) {
+            $user->setRoles(['ROLE_ADMIN']);
+        }
+            })
         ;
     }
 
