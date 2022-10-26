@@ -63,4 +63,65 @@ class PostRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function searchElementsWithForm( $date = null, $prices = null , $category = null): array
+    {
+        $query  = $this->createQueryBuilder('p');
+
+        if (!\is_null($category)) {
+            $query->leftJoin('p.category', 'cat')
+            ->addSelect('cat')
+            ->andWhere('cat.id = :category')
+            ->setParameter('category', $category);
+        } 
+
+        if (!\is_null($prices)) {
+            $query->andWhere('p.price <= :prices')
+            ->setParameter('prices', $prices);
+        } 
+
+        if (!\is_null($date)) {
+            $query->andWhere("p.date >= :date")
+            ->setParameter('date', $date);
+        }
+ 
+        return $query
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+        }
+
+
+
+    public function searchElementsWithFormCategoryM($category): array
+        {
+            return $this->createQueryBuilder('post')
+            ->innerJoin('post.category', 'cat')
+            ->addSelect('cat')
+            ->where('cat.id = :category_id')
+            ->setParameter('category_id', $category)
+            ->getQuery()
+            ->getResult();
+        }
+
+
+
+    public function protection($category): array
+      {
+        return $this->createQueryBuilder('p')
+            // ->andWhere('p.price <= :prices')
+            // ->setParameter('prices', $prices)
+
+            // Pour joindre la table catégorie
+            // ->leftJoin('p.category', 'cat')
+            // ->addSelect('cat')
+            // ->andWhere('cat.id = :category')
+            // ->setParameter('category', $category)
+
+            // ->andWhere("p.date > :date")
+            // ->setParameter('date', $date)
+
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }
