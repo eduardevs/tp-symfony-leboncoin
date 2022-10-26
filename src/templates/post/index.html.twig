@@ -8,7 +8,7 @@
         <div class="col-3 m-3 p-3">
             <div class="card">
                 <a href="{{ path('app_post_show', {'id': post.id}) }}">
-                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselControls" class="carousel slide" data-bs-ride="">
                     <div class="carousel-inner">
                         {% for image in post.images %}
                         {# {{dump(post.images)}} #}

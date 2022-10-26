@@ -4,18 +4,20 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use Doctrine\ORM\Mapping\Id;
 use App\Repository\PostRepository;
 use App\Repository\ImageRepository;
-use Doctrine\ORM\Mapping\Id;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/post')]
 class PostController extends AbstractController
 {
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(PostRepository $postRepository, ImageRepository $images): Response
     {
         return $this->render('post/index.html.twig', [
