@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Form\SearchBarType;
+use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping\Id;
@@ -15,11 +17,59 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/post')]
 class PostController extends AbstractController
 {
-    #[Route('/', name: 'app_post_index', methods: ['GET'])]
-    public function index(PostRepository $postRepository, ImageRepository $images): Response
+    #[Route('/', name: 'app_post_index', methods: ['GET','POST'])]
+    public function index(PostRepository $postRepository , Request $request ): Response
     {
+        $allDataToShow = null ;
+        $results = null;
+        $price = null ;
+        $category =null ;
+        $dateDay = null ;
+        $dateMonth = null ;
+        $dateYear = null ;
+        $date = null ;
+        $formSearch = $this->createForm(SearchBarType::class)
+                    ->handleRequest($request);
+        
+
+        if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+            $requestData = $request->request->all();
+            $requestData['search_bar'];
+            $price = $requestData['search_bar']['price'] ;
+            $category = $requestData['search_bar']['category'] ;
+            $dateDay = $requestData['search_bar']['date']['day'] ;
+            $dateMonth = $requestData['search_bar']['date']['month'];
+            $dateYear = $requestData['search_bar']['date']['year'];
+
+            if(($dateYear && isset($dateYear)) && ($dateMonth && isset($dateMonth)) && ($dateDay && isset($dateDay))) {
+                $cleanDateDay = strlen($dateDay) > 1 ? $dateDay : '0'. $dateDay ;
+                $cleanDateMonth = strlen($dateMonth) > 1 ? $dateMonth : '0'. $dateMonth ;
+                $date = $dateYear . '-' . $cleanDateMonth . '-' . $cleanDateDay  ;
+            }
+            
+            $results = $postRepository->searchElementsWithForm($date,$price,$category);
+            if(empty($results)){
+                $this->addFlash(
+                    'failed',
+                    'Aucun produit ne correspond à votre recherche'
+                );
+             } 
+            
+            if (!empty($results)){
+                $allDataToShow = $results ;
+                $countResult = count($results) ;
+                $this->addFlash(
+                    'success',
+                    "Nous avons trouver ${countResult} résultat(s) pour votre recherche"
+                );
+            }
+        }
+
+
         return $this->render('post/index.html.twig', [
+            'form_search' => $formSearch->createView(),
             'posts' => $postRepository->findAll(),
+            'allDataToShow' =>$allDataToShow
         ]);
     }
     
