@@ -8,11 +8,9 @@
 
     <h1>Annonce</h1>
 
-    <div class="row mb-3">
-
+    {# <div class="row mb-3">
         <a href="{{ path('app_post_index') }}" class="retour">&#8592 Retour</a>
-        
-    </div>
+    </div> #}
 
     <div class="row">
 
@@ -82,6 +80,13 @@
             {{ include('post/_delete_form.html.twig') }}
 
         </div>
+
+        {# Poser une question #}
+        {# <div class="row">
+            <div class="col-md-3">
+                {{ form(form) }}
+            </div>
+        </div> #}
         
     </div>
 

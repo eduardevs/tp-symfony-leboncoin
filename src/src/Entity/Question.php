@@ -110,14 +110,28 @@ class Question
     }
 
     public function getDate(): ?\DateTimeImmutable
+    // public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
     public function setDate(\DateTimeImmutable $date): self
+    // public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
         return $this;
     }
+
+    // public function getCreatedAt(): ?\DateTimeInterface
+    // {
+    //     return $this->createdAt;
+    // }
+
+    // public function setCreatedAt(\DateTimeInterface $createdAt): self
+    // {
+    //     $this->createdAt = $createdAt;
+
+    //     return $this;
+    // }
 }
