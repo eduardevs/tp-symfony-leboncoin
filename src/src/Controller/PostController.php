@@ -13,7 +13,10 @@ use App\Form\PostType;
 use App\Form\QuestionType;
 use App\Repository\PostRepository;
 use App\Repository\ImageRepository;
+// use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+// use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -130,8 +133,9 @@ class PostController extends AbstractController
     }
 
     // #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    #[Route('/question', name: 'app_question')]
-    public function show(Request $request): Response
+    // #[Route('/question', name: 'app_question')]
+    #[Route('/{id}', name: 'app_post_show', methods: ['GET','POST'])]
+    public function show( Post $post, Request $request, EntityManagerInterface $em): Response
     // public function show(Post $post): Response
     {
         // === test ====
@@ -140,15 +144,19 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-           echo " Matine" ;
-        } else {
-            dd('VV Martin') ;
+            // $question->setPostId($post);
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($question);
+            // $entityManager->flush();
+            $em->persist($question);
+            $em->flush();
+            // dd($question);
         }
 
         // ==== fin du test ===
-        // return $this->render('post/show.html.twig', [ 
-        return $this->render('post/formulaire.html.twig', [          
-            // 'post' => $post,
+        // return $this->render('post/show.html.twig', [ post/formulaire.html.twig'
+        return $this->render('post/show.html.twig', [          
+            'post' => $post,
             'form' => $form->createView()
         ]);
     }
