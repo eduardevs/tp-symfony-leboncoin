@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\EditUserFormType;
-use App\Form\RegistrationFormType;
-use App\Repository\PostRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +45,7 @@ class UsersController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'L\'utilisateur a été modifié avec success'
+                'L\'utilisateur a été modifié avec succès'
             );
             return $this->redirectToRoute('app_admin');
         }
@@ -58,6 +56,7 @@ class UsersController extends AbstractController
     }
 
     #[Route('/users/delete/{id}', 'user_delete', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(EntityManagerInterface $manager, User $user) : Response {
     
         if(!$user) {
