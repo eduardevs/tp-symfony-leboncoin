@@ -38,10 +38,12 @@ final class CategoryFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $data = self::faker()->word() ;
+
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'name' => self::faker()->word(),
-            'slug' => self::faker()->word(),
+            'name' => $data,
+            'slug' => strtolower($data),
         ];
     }
 
