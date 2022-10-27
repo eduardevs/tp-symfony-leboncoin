@@ -9,9 +9,9 @@
     <h2>User list : (CRUD)</h2>
 
     {% for message in app.flashes('success') %}
-        <div class="alert alert-success mt-4">
-            {{ message }}
-        </div>
+    <div class="alert alert-success mt-4">
+        {{ message }}
+    </div>
     {% endfor %}
 
 
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             {% if not users is same as([]) %}
-            
+
             {% for user in users %}
             <tr>
                 <!-- <th scope="row">1</th> -->
@@ -46,26 +46,25 @@
                     <a href="{{path('user_edit', { id: user.id })}}" class="btn btn-info">Modifier</a>
                 </td>
                 <td>
-                    <a href="{{path('user_delete', { id: user.id })}}" data-action="submit-confirm" class="btn btn-danger">Supprimer</a>
+                    {{ include('admin/users/_delete.html.twig') }}
                 </td>
 
             </tr>
             {% endfor %}
 
             {% else %}
-			<h4>Il n'y a pas d'ingrédients</h4>
+            <h4>Il n'y a pas d'ingrédients</h4>
 
-			<a href="{{ path('ingredient.new') }}" class="btn btn-primary">
-				Créer un ingrédient
-			</a>
-		    {% endif %}
+            <a href="{{ path('ingredient.new') }}" class="btn btn-primary">
+                Créer un ingrédient
+            </a>
+            {% endif %}
 
         </tbody>
 
 
     </table>
 
-<script src="{{ asset('assets/js/submit-confirm.js') }}"></script>
 </div>
 
 {% endblock %}
