@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
 
 #[Route('/post')]
 class PostController extends AbstractController
@@ -81,9 +84,15 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $image = $imageRepository->findOneBy(["postId"=>$post]);
-            // dd($image);
-            $imageRepository->remove($image, true);
+            $filesystem = new Filesystem();
+
+            $postId = $post->getId();
+            $image = $imageRepository->findByPostId($postId);
+            foreach($image as $todelete){
+                $link = $todelete->getLink();
+                $filesystem->remove(['symlink', '/var/www/html/public'.$link]);
+                $imageRepository->remove($todelete, true);
+            }
 
             foreach ($form['images']->getData() as $file) {
                 $originalFileName = $file->getClientOriginalName();
@@ -117,9 +126,15 @@ class PostController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
 
-            // $image = $imageRepository->findBy(["postId"=>$post]);
-            // $imageRepository->remove($image, true);
-            // Filesystem remove() deletes files, directories and symlinks:
+            $filesystem = new Filesystem();
+
+            $postId = $post->getId();
+            $image = $imageRepository->findByPostId($postId);
+            foreach($image as $todelete){
+                $link = $todelete->getLink();
+                $filesystem->remove(['symlink', '/var/www/html/public'.$link]);
+            }
+
             $postRepository->remove($post, true);
         }
 
