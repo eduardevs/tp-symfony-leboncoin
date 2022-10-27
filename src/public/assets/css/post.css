@@ -9,7 +9,7 @@ h1{
     margin-left: 100px;
     margin-right: 100px ;
     padding-top: 100px ;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     color: #3D3D3E; 
 }
 
@@ -25,7 +25,20 @@ a {
     font-style: italic;
 }
 
+.hauteur{
+    height: 30vh;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
 /* SHOW */
+.taille{
+    height: 70vh;
+}
 
 .retour {
     color: #6B77E9;
@@ -44,6 +57,12 @@ a {
 .shadow {
     -webkit-box-shadow: 5px 5px 15px 2px rgba(106,106,106,0.65); 
     box-shadow: 5px 5px 15px 2px rgba(106,106,106,0.65);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    background-color: #6B77E9;
+    border-radius: 50%;
 }
 
 /* CREATE */

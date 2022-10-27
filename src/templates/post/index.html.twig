@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}Post index{% endblock %}
+{% block title %}Liste des annonces{% endblock %}
 {% block body %}
     <link href="{{ asset('assets/css/post.css') }}" rel="stylesheet"/>
-    <h1>Post index</h1>
+    <h1>Liste des annonces</h1>
     <div class="row justify-content-around">
         {% for post in posts %}
         <div class="col-3 m-3 p-3">
             <div class="card">
                 <a href="{{ path('app_post_show', {'id': post.id}) }}">
-                <div id="carouselControls" class="carousel slide" data-bs-ride="">
+                <div id="carouselControls" class="carousel-index" data-bs-ride="carousel">
+
                     <div class="carousel-inner">
                         {% for image in post.images %}
-                        {# {{dump(post.images)}} #}
-                        {# {%if (post.images.snapshot)%} #}
-                            <div class="carousel-item active">
+                            <div class="carousel-item active hauteur">
                                 <img class="card-img-top" src={{image}} alt="Photo">
                             </div>
                         {% endfor %}
@@ -33,10 +32,8 @@
         {% else %}
             <span>Aucune annonce n'a été trouvée</span>
         {% endfor %}
+
     </div>
-    {# {% if %}
-    {% else %}
-    {% endif %} #}
 
     {# <div class="row d-flex justify-content-end">
         <div class="col-auto">
