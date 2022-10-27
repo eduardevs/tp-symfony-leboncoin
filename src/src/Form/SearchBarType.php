@@ -27,7 +27,10 @@ class SearchBarType extends AbstractType
             ->add('category',  EntityType::class, [
                 "class" => Category::class,
                 "choice_label" => "name",
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-select form-select-sm',
+                ],
             ])
             ->add('price', NumberType::class,[
                 'attr' => [

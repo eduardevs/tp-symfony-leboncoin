@@ -3,7 +3,7 @@
 {% block body %}
     <link href="{{ asset('assets/css/post.css') }}" rel="stylesheet"/>
     <h1>Liste des annonces</h1>
-        {% for post in posts %}
+        {# {% for post in posts %}
         <div class="col-3 m-3 p-3">
             <div class="card">
                 <a href="{{ path('app_post_show', {'id': post.id}) }}">
@@ -12,10 +12,16 @@
                     <div class="carousel-inner">
                         {% for image in post.images %}
                             <div class="carousel-item active hauteur">
-                                <img class="card-img-top" src={{image}} alt="Photo">
+                                 <img class="card-img-top" src={{image}} alt="Photo">
                             </div>
+
+        {% endfor %} #}
+
     <h1>Post index</h1>
 {{ form(form_search)}}
+
+</div>
+
 {% for fail in app.flashes('failed') %}
     {{ fail }}
 {% endfor %}
@@ -42,9 +48,9 @@
                 </div>
                 <span class="date">Date de publication : {{ post.date ? post.date|date('d/m/Y') : '' }}</span>
         </div>      
-        {% else %}
-            <span>Aucune annonce n'a été trouvée</span>
-        {% endfor %}
+    {% else %}
+        <span>Aucune annonce n'a été trouvée</span>
+    {% endfor %}
 
     </div>
 
@@ -69,7 +75,6 @@
                     <span>Aucune annonce n'a été trouvée</span>
                 {% endfor %}
             </div>
-        {% endfor %}
 </div>
 
 
