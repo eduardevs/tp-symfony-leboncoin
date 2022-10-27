@@ -27,15 +27,6 @@ class PostType extends AbstractType
                 'multiple' => true,
                 'mapped' => false
             ))
-            // ->add('button', ButtonType::class, array(
-            //     ->add('images', FileType::class, array(
-            //         'multiple' => true,
-            //         'mapped' => false,
-            //         "attr" => array(
-            //         "accept" => "image/*")
-            //     )))
-
-            // )
             ;
     }
 
