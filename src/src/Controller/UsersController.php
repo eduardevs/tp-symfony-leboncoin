@@ -14,7 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UsersController extends AbstractController
 {
-   
     #[Route('/admin/users', name: 'app_admin', methods: ['GET',])]
     #[IsGranted('ROLE_ADMIN')]
     public function adminPage(UserRepository $userRepository) 
@@ -53,10 +52,9 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[Route('admin/users/delete/{id}', 'user_delete', methods: ['GET'])]
+    #[Route('admin/users/delete/{id}', 'user_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(EntityManagerInterface $manager, User $user) : Response {
-    
+    public function delete(EntityManagerInterface $manager, User $user) : Response {    
         if(!$user) {
             $this->addFlash(
                 'success',
@@ -76,4 +74,6 @@ class UsersController extends AbstractController
 
     return $this->redirectToRoute('app_admin');
     }
+
+    // public function adminPage 
 }

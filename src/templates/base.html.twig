@@ -44,8 +44,15 @@
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                     </li>
                 </ul>
-                <p class="me-5 mt-2"> Bienvenue {{ app.user.firstname }}</p>
-                <a class="btn btn-outline-success" href="{{ path('app_logout') }}">Logout</a>
+
+                {% if app.user %}
+                <div>Bienvenue<p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p>
+                    <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+                </div>
+                {% else %}
+                <a class="btn btn-outline-success" href="{{ path('app_login') }}">Se connecter</a>
+
+                {% endif %}
 
             </div>
         </div>
