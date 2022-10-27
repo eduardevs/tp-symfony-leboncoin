@@ -6,6 +6,7 @@ use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PostType extends AbstractType
 {
@@ -14,10 +15,12 @@ class PostType extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('images')
-            // ->add('categories')
             ->add('category')
             ->add('description')
+            ->add('images', FileType::class, array(
+                'multiple' => true,
+                'mapped' => false
+            ))
         ;
     }
 

@@ -1,37 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Annonce{% endblock %}
 
 {% block body %}
 
     <link href="{{ asset('assets/css/post.css') }}" rel="stylesheet"/>
 
-    <h1>Post</h1>
-
-    {# <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ post.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ post.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ post.price }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ post.date ? post.date|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table> #}
+    <h1>Annonce</h1>
 
     <div class="row mb-3">
 
@@ -48,8 +23,8 @@
                     <div class="carousel-inner">
                     {% for image in post.images %}
 
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src={{image}} alt="Photo">
+                        <div class="carousel-item hauteur2">
+                            <img class="d-block" src={{image}} alt="Photo">
                         </div>
 
                     {% endfor %}

@@ -6,7 +6,7 @@
     {{ form_row(form.name, {'label': 'Titre'}) }}
     {{ form_row(form.price, {'label': 'Prix'}) }}
     {{ form_row(form.images, {'label': 'Ajouter une ou plusieurs photo(s)'}) }}
-    {# {{ form_row(form.categories, {'label': 'Catégorie'}) }} #}
+    <span class="mb-3"><small>Pour ajouter plusieurs images, sélectionner les en cliquant et en maintenant la touche ctrl</small></span>
     {{ form_row(form.category, {'label': 'Catégorie'}) }}
     {{ form_row(form.description) }}
     <button class="btn btn-outline-primary">{{ button_label|default('Créer une annonce') }}</button>
