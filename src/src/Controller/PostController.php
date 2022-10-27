@@ -132,29 +132,21 @@ class PostController extends AbstractController
         ]);
     }
 
-    // #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    // #[Route('/question', name: 'app_question')]
     #[Route('/{id}', name: 'app_post_show', methods: ['GET','POST'])]
     public function show( Post $post, Request $request, EntityManagerInterface $em): Response
-    // public function show(Post $post): Response
     {
-        // === test ====
+        $user = $this->getUser();
         $question = new Question();
         $form = $this->createForm(QuestionType::class, $question);
         $form->handleRequest($request);
+        $question->setUserId($user);
+        $question->setPostId($post);
 
         if($form->isSubmitted() && $form->isValid()) {
-            // $question->setPostId($post);
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($question);
-            // $entityManager->flush();
             $em->persist($question);
             $em->flush();
-            // dd($question);
         }
 
-        // ==== fin du test ===
-        // return $this->render('post/show.html.twig', [ post/formulaire.html.twig'
         return $this->render('post/show.html.twig', [          
             'post' => $post,
             'form' => $form->createView()
