@@ -5,10 +5,10 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Entity\Image;
 use App\Form\PostType;
+use Doctrine\ORM\Mapping\Id;
 use App\Repository\PostRepository;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,11 +17,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/post')]
 class PostController extends AbstractController
 {
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(PostRepository $postRepository, ImageRepository $images): Response
     {
         return $this->render('post/index.html.twig', [
