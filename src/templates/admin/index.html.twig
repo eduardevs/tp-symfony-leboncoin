@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}Users list{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+    <h2>User list : (CRUD)</h2>
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-4">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+
+                <th scope="col">Date d'inscription</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Edition</th>
+                <th scope="col">Suppresion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% if not users is same as([]) %}
+
+            {% for user in users %}
+            <tr>
+                <!-- <th scope="row">1</th> -->
+                <td>{{user.firstname}} {{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    {{user.createdAt|date('d/m/Y')}}
+                </td>
+                <td>
+                    {{user.roles|join(' ')}}
+                </td>
+                <td>
+                    <a href="{{path('user_edit', { id: user.id })}}" class="btn btn-info">Modifier</a>
+                </td>
+                <td>
+                    {{ include('admin/users/_delete.html.twig') }}
+                </td>
+
+            </tr>
+            {% endfor %}
+
+            {% else %}
+            <h4>Il n'y a pas d'ingrédients</h4>
+
+            <a href="{{ path('ingredient.new') }}" class="btn btn-primary">
+                Créer un ingrédient
+            </a>
+            {% endif %}
+
+        </tbody>
+
+
+    </table>
+
+</div>
+
+{% endblock %}

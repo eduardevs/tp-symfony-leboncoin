@@ -38,7 +38,7 @@ class Post
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Question::class)]
     private Collection $questions;
 
-    #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class)]
+    #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Image::class, cascade:["persist", "remove"], orphanRemoval:true)]
     #[ORM\JoinColumn(nullable: false)]
     private Collection $images;
 
