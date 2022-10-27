@@ -141,6 +141,7 @@ class PostController extends AbstractController
         $form->handleRequest($request);
         $question->setUserId($user);
         $question->setPostId($post);
+        // dd($question);
 
         if($form->isSubmitted() && $form->isValid()) {
             $em->persist($question);
