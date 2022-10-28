@@ -1,15 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Post{% endblock %}
+{% block title %}Modifier une annonce{% endblock %}
 
 {% block body %}
-    <h1>Edit Post</h1>
+    <h1>Modifier une annonce</h1>
 
         {{ include('post/_form.html.twig', {'button_label': 'Modifier'}) }}
             
     </div>
-
-    {# <a href="{{ path('app_post_index') }}" class="retour">&#8592 Retour</a> #}
 
     {{ include('post/_delete_form.html.twig') }}
 {% endblock %}

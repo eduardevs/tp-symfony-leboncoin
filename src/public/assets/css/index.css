@@ -1,8 +1,6 @@
 
 body {
     background-color: blue;
-    /* width: 100vw;
-    height: 100vh; */
 }
 
 html {
@@ -19,7 +17,6 @@ html {
 
 
 .main-container {
-    /* background-color: blueviolet; */
     padding-top: 120px;
     width: 87%;
 }

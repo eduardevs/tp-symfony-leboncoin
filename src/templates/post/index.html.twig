@@ -13,7 +13,6 @@
 {% endfor %}
 
 
-
 <div>
     {% for post in allDataToShow %}
         <div class="col-3 m-3 p-3">
@@ -67,15 +66,8 @@
                 {% else %}
                     <span>Aucune annonce n'a été trouvée</span>
                 {% endfor %}
-            {# </div> #}
             {% endfor %}
         </div>
 </div>
-
-    <div class="row d-flex justify-content-end">
-        <div class="col-auto">
-            <a href="{{ path('app_post_new') }}" class="btn btn-outline-primary">Ajouter une annonce</a>
-        </div>
-    </div>
 
 {% endblock %}
