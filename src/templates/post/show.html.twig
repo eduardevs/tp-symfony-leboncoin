@@ -92,7 +92,7 @@
                             <h5 class="card-title">{{question.userId.firstname}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ question.date | date("d/m/Y")}}</h6>
                             <p class="card-text">{{question.questionText}}</p>
-                            <p><a href="#ajout-commentaire" data-reply data-id="{{question.id}}" class="btn btn-secondary">Répondre</a></p>
+                            {# <p><a href="#ajout-commentaire" data-reply data-id="{{question.id}}" class="btn btn-secondary">Répondre</a></p> #}
                         </div>
                     </div>
                 {% endfor %}
@@ -104,7 +104,7 @@
 <script src="{{ asset('assets/js/post.js') }}"></script>
 {% endblock %}
 
-{% block javascripts %}
+{# {% block javascripts %}
     <script>
         window.onload = () => {
             document.querySelectorAll("[data-reply]").forEach(element => {
@@ -114,5 +114,5 @@
             })
         }
     </script>
-{% endblock %}
+{% endblock %} #}
 

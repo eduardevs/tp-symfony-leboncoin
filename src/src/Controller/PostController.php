@@ -33,10 +33,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/post')]
 class PostController extends AbstractController
 {
-    // #[IsGranted('ROLE_USER')] -> pour fermer l'app aux utilisateurs anonymes
-    // public function index(PostRepository $postRepository, ImageRepository $images): Response
     #[Route('/', name: 'app_post_index', methods: ['GET','POST'])]
-    public function index(PostRepository $postRepository , Request $request , ImageRepository $images): Response
+    public function index(PostRepository $postRepository , Request $request ): Response
     {
         $allDataToShow = null ;
         $results = null;
@@ -103,6 +101,7 @@ class PostController extends AbstractController
        
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             foreach ($form['images']->getData() as $file) {
                 $originalFileName = $file->getClientOriginalName();
                 $baseFileName = pathinfo($originalFileName, PATHINFO_FILENAME);
@@ -114,11 +113,10 @@ class PostController extends AbstractController
 
                 $entityManager->persist($image);
                 $entityManager->persist($post);
-                
+
                 $post->addImage($image);
                 $entityManager->flush();
             }
-
 
             $postRepository->save($post, true);
             return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
@@ -130,7 +128,14 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_post_show', methods: ['GET','POST'])]
+    #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
+    // public function show(Post $post): Response
+    // {
+    //     return $this->render('post/show.html.twig', [
+    //         'post' => $post,
+    //     ]);
+    // }
+    // test
     public function show( Post $post, Request $request, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
@@ -151,6 +156,8 @@ class PostController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    // fin test
 
     #[Route('/{id}/edit', name: 'app_post_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Post $post, PostRepository $postRepository, ImageRepository $imageRepository, EntityManagerInterface $entityManager): Response
@@ -181,7 +188,7 @@ class PostController extends AbstractController
 
                 $entityManager->persist($image);
                 $entityManager->persist($post);
-                
+
                 $post->addImage($image);
                 $entityManager->flush();
             }
@@ -198,7 +205,7 @@ class PostController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_post_delete', methods: ['POST'])]
-    public function delete(Request $request, Post $post, PostRepository $postRepository, ImageRepository $imageRepository, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Post $post, PostRepository $postRepository, ImageRepository $imageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
 
