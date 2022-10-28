@@ -88,7 +88,8 @@
                 </ul>
 
                 {% if app.user %}
-                <div>Bienvenue<p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p>
+                {# <div>Bienvenue<p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p> #}
+                {# <div><p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p> #}
                     <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
                 {% else %}
