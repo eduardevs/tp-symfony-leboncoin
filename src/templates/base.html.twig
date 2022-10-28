@@ -85,16 +85,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                     </li>
+                    <li class="nav-item">
+                        {# <a class="nav-link" href="">Bienvenue {{ app.user.firstname }}</a> #}
+                        {# <span class="navbar-text">Bienvenue {{ app.user ? app.user.firstname : '' }}</span> #}
+                        {% if app.user %}
+                            {# <div>Bienvenue<p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p> #}
+                            <div>
+                                {# <a class="nav-link" href="">Bienvenue {{ app.user ? app.user.firstname : '' }}</a> #}
+                                <span class="navbar-text">Bienvenue {{ app.user ? app.user.firstname : '' }}</span>
+                                <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+                            </div>
+                        {% else %}
+                            <a class="btn btn-outline-success" href="{{ path('app_login') }}">Se connecter</a>
+                        {% endif %}
+                    </li>
                 </ul>
 
-                {% if app.user %}
+                {# {% if app.user %}
                 <div>Bienvenue<p class="me-5 mt-2"> {{ app.user ? app.user.firstname : '' }}</p>
+                    <a class="nav-link" href="">Bienvenue {{ app.user ? app.user.firstname : '' }}</a>
                     <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
                 {% else %}
                 <a class="btn btn-outline-success" href="{{ path('app_login') }}">Se connecter</a>
 
-                {% endif %}
+                {% endif %} #}
 
             </div>
         </div>

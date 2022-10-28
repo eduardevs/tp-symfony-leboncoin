@@ -30,11 +30,15 @@ class Question
     #[ORM\OneToMany(mappedBy: 'questionId', targetEntity: Response::class, orphanRemoval: true)]
     private Collection $responses;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    private ?\DateTimeImmutable $date = null;
+    // #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    // private ?\DateTimeImmutable $date = null;
+
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private $date = null;
 
     public function __construct()
     {
+        $this->date = new \DateTimeImmutable();
         $this->responses = new ArrayCollection();
     }
 
@@ -110,14 +114,29 @@ class Question
     }
 
     public function getDate(): ?\DateTimeImmutable
+    // new \DateTime
+    // public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
     public function setDate(\DateTimeImmutable $date): self
+    // public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
         return $this;
     }
+
+    // public function getCreatedAt(): ?\DateTimeInterface
+    // {
+    //     return $this->createdAt;
+    // }
+
+    // public function setCreatedAt(\DateTimeInterface $createdAt): self
+    // {
+    //     $this->createdAt = $createdAt;
+
+    //     return $this;
+    // }
 }

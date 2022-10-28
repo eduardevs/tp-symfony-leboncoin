@@ -4,14 +4,23 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Entity\Image;
-use App\Form\PostType;
+// use App\Form\PostType;
 use Doctrine\ORM\Mapping\Id;
 use App\Form\SearchBarType;
 use App\Repository\CategoryRepository;
+use App\Entity\Question;
+use App\Form\PostType;
+use App\Form\QuestionType;
 use App\Repository\PostRepository;
 use App\Repository\ImageRepository;
+// use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+// use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -123,11 +132,25 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    public function show(Post $post): Response
+    #[Route('/{id}', name: 'app_post_show', methods: ['GET','POST'])]
+    public function show( Post $post, Request $request, EntityManagerInterface $em): Response
     {
-        return $this->render('post/show.html.twig', [
+        $user = $this->getUser();
+        $question = new Question();
+        $form = $this->createForm(QuestionType::class, $question);
+        $form->handleRequest($request);
+        $question->setUserId($user);
+        $question->setPostId($post);
+        // dd($question);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            $em->persist($question);
+            $em->flush();
+        }
+
+        return $this->render('post/show.html.twig', [          
             'post' => $post,
+            'form' => $form->createView()
         ]);
     }
 
