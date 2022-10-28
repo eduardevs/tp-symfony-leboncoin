@@ -33,9 +33,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/post')]
 class PostController extends AbstractController
 {
-    #[Route('/', name: 'app_post_index', methods: ['GET'])]
-    #[IsGranted('ROLE_USER')]
-
+    // #[IsGranted('ROLE_USER')] -> pour fermer l'app aux utilisateurs anonymes
     // public function index(PostRepository $postRepository, ImageRepository $images): Response
     #[Route('/', name: 'app_post_index', methods: ['GET','POST'])]
     public function index(PostRepository $postRepository , Request $request , ImageRepository $images): Response
