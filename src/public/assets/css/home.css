@@ -1,33 +1,8 @@
 *{
-    /* font-family: 'Inter'; */
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-}
-
-/* body{
-    background-color: orange;
-} */
-p{
-    /* position: absolute; */
-    /* width: 894px; */
-    /* height: 48px; */
-    left: 290px;
-    top: 164px;
-    margin-bottom: 150px;
-    margin-left: 100px;
-    margin-right: 100px ;
-    /* background-color: #6B77E9; */
-    padding-top: 100px ;
-    padding-bottom: 100px;
-    /* font-family: Verdana (sans-serif);
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px; */
-    /* text-align: center; */
-    color: #3D3D3E; 
 }
 
 h4{
