@@ -32,9 +32,6 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?User $userId = null;
 
-    // #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Category::class)]
-    // private Collection $categories;
-
     #[ORM\OneToMany(mappedBy: 'postId', targetEntity: Question::class)]
     private Collection $questions;
 
@@ -49,7 +46,6 @@ class Post
     ////////////////////////////////////////////////////////////////////
     public function __construct()
     {
-        // $this->categories = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->date = new \DateTimeImmutable();
@@ -120,35 +116,6 @@ class Post
         return $this;
     }
 
-    // /**
-    //  * @return Collection<int, Category>
-    //  */
-    // public function getCategories(): Collection
-    // {
-    //     return $this->categories;
-    // }
-
-    // public function addCategory(Category $category): self
-    // {
-    //     if (!$this->categories->contains($category)) {
-    //         $this->categories->add($category);
-    //         $category->setPostId($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeCategory(Category $category): self
-    // {
-    //     if ($this->categories->removeElement($category)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($category->getPostId() === $this) {
-    //             $category->setPostId(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
 
     /**
      * @return Collection<int, Question>
