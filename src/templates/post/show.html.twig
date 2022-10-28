@@ -80,25 +80,19 @@
 
         </div>
 
-        {# Poser une question #}
         <div class="row">
-            {# <div class="col-md-3"> #}
             <div class="col-md-3" id="ajout-commentaire">
                 {{ form(form) }}
             </div>
 
             <div class="col-md-9">
                 {% for question in post.questions %}
-                    {# {{ dump(post.question) }} #}
                     <div class="card" style="width: 18rem;">
-                        {# <img class="card-img-top" src="..." alt="Card image cap"> #}
                         <div class="card-body">
                             <h5 class="card-title">{{question.userId.firstname}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ question.date | date("d/m/Y")}}</h6>
                             <p class="card-text">{{question.questionText}}</p>
-                            {# test #}
                             <p><a href="#ajout-commentaire" data-reply data-id="{{question.id}}" class="btn btn-secondary">Répondre</a></p>
-                            {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
                         </div>
                     </div>
                 {% endfor %}
@@ -121,5 +115,4 @@
         }
     </script>
 {% endblock %}
-{# document.querySelector("#comments_parentid").value = this.dataset.id; #}
 
