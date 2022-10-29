@@ -4,13 +4,7 @@
 
 {% block body %}
 
-    {# <link href="{{ asset('assets/css/post.css') }}" rel="stylesheet"/> #}
-
     <h1>Annonce</h1>
-
-    {# <div class="row mb-3">
-        <a href="{{ path('app_post_index') }}" class="retour">&#8592 Retour</a>
-    </div> #}
 
     <div class="row">
 
@@ -68,23 +62,19 @@
     </div>
 
     <div class="row justify-content-end mt-3 mb-5">
-
-        <div class="col-auto">
-
-            <a href="{{ path('app_post_edit', {'id': post.id}) }}"  class="btn btn-outline-primary">Modifier</a>
-        </div>
-
-        <div class="col-auto">
-
-            {{ include('post/_delete_form.html.twig') }}
-
-        </div>
-
+        {% if userIsAuthor and post.userId.id  is same as(userIsAuthor.id)  %}
+                <div class="col-auto">
+                    <a href="{{ path('app_post_edit', {'id': post.id}) }}"  class="btn btn-outline-primary">Modifier</a>
+                </div>
+                <div class="col-auto">
+                    {{ include('post/_delete_form.html.twig') }}
+                </div>
+        {% endif %}
+        
         <div class="row">
             <div class="col-md-3" id="ajout-commentaire">
                 {{ form(form) }}
             </div>
-
             <div class="col-md-9">
                 {% for question in post.questions %}
                     <div class="card" style="width: 18rem;">
@@ -104,15 +94,4 @@
 <script src="{{ asset('assets/js/post.js') }}"></script>
 {% endblock %}
 
-{# {% block javascripts %}
-    <script>
-        window.onload = () => {
-            document.querySelectorAll("[data-reply]").forEach(element => {
-                element.addEventListener("click", function(){
-                    console.log(this);
-                });
-            })
-        }
-    </script>
-{% endblock %} #}
 

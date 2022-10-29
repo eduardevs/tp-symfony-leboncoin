@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} New Post{% endblock %}
+{% block title %}Nouvelle annonce{% endblock %}
 
 {% block body %}
 
     <h1>Déposer une annonce</h1>
+
     <div class="d-flex justify-content-center">
         {{ include('post/_form.html.twig') }}     
     </div>
 
-    {# <a href="{{ path('app_post_index') }}" class="retour">&#8592 Retour</a> #}
 {% endblock %}
