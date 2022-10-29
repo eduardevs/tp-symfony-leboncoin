@@ -73,7 +73,7 @@ class PostController extends AbstractController
                 $countResult = count($results) ;
                 $this->addFlash(
                     'success',
-                    "Nous avons trouver ${countResult} résultat(s) pour votre recherche"
+                    "Nous avons trouvé ${countResult} résultat(s) pour votre recherche"
                 );
             }
         }
@@ -125,8 +125,8 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    public function show( Post $post, Request $request, EntityManagerInterface $em): Response
+    #[Route('/{id}', name: 'app_post_show', methods: ['GET','POST'])]
+    public function show(  $id , Post $post, Request $request, EntityManagerInterface $em ): Response
     {
         $user = $this->getUser();
         $question = new Question();
@@ -142,7 +142,8 @@ class PostController extends AbstractController
 
         return $this->render('post/show.html.twig', [          
             'post' => $post,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'userIsAuthor' => $user
         ]);
     }
 
@@ -193,23 +194,23 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_post_delete', methods: ['POST'])]
-    public function delete(Request $request, Post $post, PostRepository $postRepository, ImageRepository $imageRepository): Response
+    #[Route('/delete/{id}', name: 'app_post_delete', methods: ['DELETE','GET','POST'])]
+    public function delete( $id , Post $post, Request $request, EntityManagerInterface $manager, PostRepository $postRepository, ImageRepository $imageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
 
             $filesystem = new Filesystem();
-
-            $postId = $post->getId();
+            $postId = $postRepository->find($id);
             $image = $imageRepository->findByPostId($postId);
             foreach($image as $todelete){
                 $link = $todelete->getLink();
                 $filesystem->remove(['symlink', '/var/www/html/public'.$link]);
             }
+            $manager->remove($postId);
+            $manager->flush();
 
-            $postRepository->remove($post, true);
-        }
-
-        return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
+        } 
+        
+        return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER); 
     }
 }
