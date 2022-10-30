@@ -1,22 +1,19 @@
-*{
+/* *{
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-}
+} */
 
 h1{
-    margin-left: 100px;
-    margin-right: 100px ;
-    padding-top: 100px ;
-    padding-bottom: 50px;
-    color: #3D3D3E; 
+    text-align: center;
+    padding: 0 0 1em 0;
 }
 
-a {
+/* a {
     text-decoration: none;
     color: black;
-}
+} */
 
 /* INDEX */
 
@@ -33,6 +30,12 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+
+
+/* div.every-post-area {
+    width: 80%;
+    padding-top: 75px;
+} */
 
 
 /* SHOW */
@@ -68,4 +71,138 @@ img {
 /* CREATE */
 form {
     width: auto;
+}
+form[name="search_bar"] {
+    background-color: #6B77E9;
+    width: 75%;
+    border-radius: 20px;
+    padding: 1.75em 2em;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/** SEARCH BAR */
+
+form[name="search_bar"] label {
+    margin-bottom: 15px;
+    color: white;
+}
+
+
+form[name="search_bar"] div#search_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+form[name="search_bar"] div {
+    display: inline-block ;
+}
+
+
+form[name="search_bar"] div#search_bar > *{
+    margin: 0px 10px;
+}
+
+
+form[name="search_bar"]  button#search_bar_submit {
+    padding: 6.75px 12px;
+    background-color: white;
+    border-radius: 6px;
+    border: none;
+    color : #2d378c; 
+
+
+}
+
+
+
+
+form[name="search_bar"] > * {
+    display: inline-block;
+}
+
+
+form[name="search_bar"] select#search_bar_category   {
+    padding: 6.75px 12px;
+}
+
+
+div.flash-info {
+    width: 75%;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+div.btns-power div.col-auto {
+    display: inline-block;
+    margin-top: 20px;
+
+}
+
+
+/** Espace Commentaire  */
+
+div.row.all-comments-espace  {
+    /* background-color: blueviolet; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+div.row div#ajout-commentaire{
+    background-color: #EDEDED;
+    width: 95%;
+    padding: 15px 10px;
+    border-radius: 15px;
+    margin-top: 30px;
+
+}
+
+
+div #comments-area {
+    background-color: #EDEDED ;
+    width: 95%;
+    height: 400px;
+    overflow: scroll;
+    margin-top: 30px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+div #comments-area .card {
+    background-color: rgb(255, 255, 255);
+    margin: 5px 10px;
+    
+}
+
+
+div.col-md-3 {
+    width: 100%;
+}
+
+div.col-md-3 label {
+    margin-bottom: 20px;
+}
+
+
+div.col-md-3 button#question_submit {
+    margin-top: 20px;
+    background-color: #6B77E9;
+    padding: 0.25em 2em;
+    float: right;
+    color:white ; 
+    border-radius: 6px;
+
+}
+
+div.col-md-3 button#question_submit:hover {
+    color:#6B77E9 ; 
+    background-color: white;
 }

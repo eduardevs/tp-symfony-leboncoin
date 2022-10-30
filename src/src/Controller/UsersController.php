@@ -75,5 +75,13 @@ class UsersController extends AbstractController
     return $this->redirectToRoute('app_admin');
     }
 
-    // public function adminPage 
+
+    #[Route('/espacepersonnel/{id}', 'user_space', methods: ['GET',])]
+    public function personnalEspace(UserRepository  $userRepository , $id) : Response {   
+        $userm = $userRepository->find($id) ;
+        return $this->render('users/personnal.html.twig', [
+            'userIdentity'=>  $userRepository->find($id)
+        ]);
+
+    }    
 }

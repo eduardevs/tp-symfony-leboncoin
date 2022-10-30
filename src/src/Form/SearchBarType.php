@@ -30,7 +30,9 @@ class SearchBarType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'class' => 'form-select form-select-sm',
-                ],
+                ],                
+                'label'=>'Catégorie : ',
+
             ])
             ->add('price', NumberType::class,[
                 'attr' => [

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Espace Personnel {% endblock %}
+
+{% block body %}         
+<div class="example-wrapper">
+    <h2> Espace Personnel</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id : </th>
+                <th scope="col">Email :</th>
+                <th scope="col">Nom - Prénom</th>
+                <th scope="col">Date d'inscription</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+                <td>{{userIdentity.id}}</td>
+                <td>{{userIdentity.email}}</td>
+                <td>{{userIdentity.lastname}} - {{userIdentity.firstname}}</td>
+                <td>{{userIdentity.createdAt|date('d/m/Y')}}</td>
+            </tr>   
+        </tbody>
+    </table>
+    <div class="goto-admin">
+    {% for role in userIdentity.roles  %}
+        {% if role is same as "ROLE_ADMIN" %}
+          <button><a class="btn-profil" href="{{ path('app_admin')}}">  Pannel d'aministration</button>
+         {% endif %}
+    {% endfor %} 
+    </div>
+</div> 
+{% endblock %}

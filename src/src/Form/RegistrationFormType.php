@@ -22,32 +22,38 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'label' => 'E-mail'
-                ]
+                ],
+                'label' => 'E-mail :'
+
             ])
             ->add('lastname', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'label' => 'Nom'
-                ]
+                ],
+                'label' => 'Nom :'
+
             ])
             ->add('firstname', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'label' => 'Prénom'
-                ]
+                    'label' => 'Prénom :'
+                ],
+                'label' => 'Prénom'
+
             ])
             ->add('address', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'label' => 'Adresse'
-                ]
+                ],
+                'label' => 'Adresse postale :'
+
             ])
             ->add('city', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'label' => 'Ville'
-                ]
+                ],
+                'label' => 'Ville '
+
             ])
             ->add('RGPDConsent', CheckboxType::class, [
                 'mapped' => false,
@@ -66,6 +72,7 @@ class RegistrationFormType extends AbstractType
                     'autocomplete' => 'new-password',
                     'class' => 'form-control'
                 ],
+                'label' => 'Mot de passe : ',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -77,6 +84,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+
             ]);
     }
 

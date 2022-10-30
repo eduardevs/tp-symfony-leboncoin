@@ -1,19 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %}Liste des annonces{% endblock %}
 {% block body %}
-    <link href="{{ asset('assets/css/post.css') }}" rel="stylesheet"/>
+
+
+<div class="every-post-area">
+
+
+
     <h1>Liste des annonces</h1>
-{{ form(form_search)}}
-
-{% for fail in app.flashes('failed') %}
-    {{ fail }}
-{% endfor %}
-{% for bravo in app.flashes('success') %}
-    {{ bravo }}
-{% endfor %}
+    {{ form(form_search)}}
 
 
-<div>
+    <div class="flash-info">
+        {% for fail in app.flashes('failed') %}
+            {{ fail }}
+        {% endfor %}
+        {% for bravo in app.flashes('success') %}
+            {{ bravo }}
+        {% endfor %}
+    </div>
     {% for post in allDataToShow %}
         <div class="col-3 m-3 p-3">
             <div class="card">
@@ -37,9 +42,6 @@
             <span class="date">Date de publication : {{ post.date ? post.date|date('d/m/Y') : '' }}</span>
         </div> 
     {% else %}
-        <span>Aucune annonce n'a été trouvée</span>
-
-
         <div class="row justify-content-around">
             {% for post in posts %}
                 <div class="col-3 m-3 p-3">
@@ -63,8 +65,6 @@
                     </div>
                     <span class="date">Date de publication : {{ post.date ? post.date|date('d/m/Y') : '' }}</span>
                 </div>
-                {% else %}
-                    <span>Aucune annonce n'a été trouvée</span>
                 {% endfor %}
             {% endfor %}
         </div>

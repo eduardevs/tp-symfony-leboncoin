@@ -38,14 +38,17 @@ final class CategoryFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
-        $data = self::faker()->word() ;
-
+        $allDatas = ["Technologie" , "Maison", "Beauté","Vêtements","Voiture","Bureau" ,"Musique" ," Produits exotiques","Soin de la Peau","Soin des cheveux","Livres", "Jeux Vidéos & consoles", "Rangement"];
+        $randomCategory = array_rand($allDatas,1);
+        $element = $allDatas[$randomCategory ];
+        $value = str_replace(' ', '', $element);
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'name' => $data,
-            'slug' => strtolower($data),
+            'name' => $element,
+            'slug' => strtolower($value),
         ];
     }
+
 
     protected function initialize(): self
     {

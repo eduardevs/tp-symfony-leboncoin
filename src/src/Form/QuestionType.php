@@ -17,12 +17,16 @@ class QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('questionText', TextareaType::class)
-            // ->add('date')
-            // ->add('userId')
-            // ->add('postId')
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('questionText', TextareaType::class ,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'Votre question : ',
+
+            ])
+            ->add('submit', SubmitType::class ,[
+                'label' => 'Envoyer',
+            ]);        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
